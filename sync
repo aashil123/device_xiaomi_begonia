@@ -4,17 +4,8 @@ mkdir -p /tmp/rom # Where to sync source
 cd /tmp/rom
 
 # Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
-repo init -q --no-repo-verify --depth=1 -u git://github.com/StyxProject/manifest.git -b R -g default,-device,-mips,-darwin,-notdefault
+repo init -q --no-repo-verify --depth=1 -u git://github.com/PotatoProject/manifest.git -b dumaloo-release -g default,-device,-mips,-darwin,-notdefault
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 8
 
-# Clone Device Repos
-git clone https://github.com/PixelExperience/device_mediatek_sepolicy device/mediatek/sepolicy
-git clone https://github.com/PixelExperience/vendor_mediatek_ims vendor/mediatek/ims
-git clone https://github.com/PixelExperience/vendor_mediatek-opensource vendor/mediatek/opensource
-git clone https://github.com/PixelExperience/vendor_mediatek_interfaces vendor/mediatek/interfaces
-git clone https://github.com/StyxProject-Devices/device_xiaomi_begonia device/xiaomi/begonia
-git clone https://github.com/PixelExperience-Devices/device_xiaomi_begonia-kernel device/xiaomi/begonia-kernel
-git clone https://github.com/StyxProject-Devices/vendor_xiaomi_begonia vendor/xiaomi/begonia
-git clone https://github.com/PotatoDevices/vendor_redmi_begonia-firmware vendor/redmi/begonia-firmware
